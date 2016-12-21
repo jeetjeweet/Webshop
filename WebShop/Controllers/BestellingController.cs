@@ -52,6 +52,8 @@ namespace WebShop.Controllers
             }
             else
             {
+                //implementeer if(3x een productid == een productid in de lijst met speciale acties)
+                //{doe shit}
                 Bestelling b = new Bestelling(DataBestelling.GetLatestBestelnummer() + 1, Login.loggedinUser.KlantID, 10, 0, "1", DateTime.Now);
                 if (DataBestelling.SetBestellingWithProcedure(Login.loggedinUser.winkelwagenlist, b))
                 {

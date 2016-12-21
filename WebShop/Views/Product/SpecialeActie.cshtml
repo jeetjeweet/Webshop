@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebShop.Models.Classes.Product>
+
+@{
+    ViewBag.Title = "SpecialeActie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Als u 3 dezelfde van onderstaande producten besteld krijgt u 10% korting op de hele bestelling!</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Korting)
+        </th>
+        <th>
+            @Html.DisplayName("Aan winkelwagen toevoegen")
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Korting)%
+            </td>
+            <td>
+                @using (Html.BeginForm("Winkelwagen", "Bestelling", new { productid = item.ProductID }, FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <input type="submit" value="Toevoegen" class="btn btn-success" />
+                    </div>
+                }
+            </td>
+        </tr>
+
+    }
+</table>

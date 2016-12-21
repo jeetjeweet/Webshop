@@ -22,6 +22,11 @@ namespace WebShop.Controllers
             List<Product> alleproducten = DataProduct.GetAllProducts();
             return View(alleproducten);
         }
+        public ActionResult SpecialeActie()
+        {
+            List<Product> specialactieproductlist = DataProduct.SpecialeActie(DataProduct.GetDate());
+            return View(specialactieproductlist);
+        }
 
         [HttpPost]
         public ActionResult EditSale(double korting, int productid)

@@ -217,6 +217,7 @@
     <Content Include="Views\Adres\AddAdres.cshtml" />
     <Content Include="Views\Product\AlleProducten.cshtml" />
     <Content Include="Views\Bestelling\Winkelwagen.cshtml" />
+    <Content Include="Views\Product\SpecialeActie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

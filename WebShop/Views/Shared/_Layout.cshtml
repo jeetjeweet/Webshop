@@ -21,16 +21,22 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Producten", "AlleProducten", "Product")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Producten<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Alle Producten", "AlleProducten", "Product")</li>
+                            <li>@Html.ActionLink("Actie Producten","SpecialeActie","Product")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Log in","LogIn","Home")</li>
                     @if(Session["Loggedin"] != null)
                     {
-                        <li>@Html.ActionLink("Log out","LogOut","Home")</li>
                         <li>@Html.ActionLink("Winkelwagen","Winkelwagen","Bestelling")</li>
+                        <li>@Html.ActionLink("Log out", "LogOut", "Home")</li>
                     }
                     @if (Session["Loggedin"] == null)
                     {
+                        <li>@Html.ActionLink("Log in", "LogIn", "Home")</li>
                         <li>@Html.ActionLink("Register", "Register", "Register")</li>
                     }
                 </ul>
