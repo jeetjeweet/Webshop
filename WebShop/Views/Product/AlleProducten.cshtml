@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebShop.Models.Classes.Product>
+
+@{
+    ViewBag.Title = "AlleProducten";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alle Producten</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Korting)
+        </th>
+        <th>
+            @Html.DisplayName("Aan winkelwagen toevoegen")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Korting)%
+        </td>
+        <td>
+            @using (Html.BeginForm("Winkelwagen", "Bestelling",new { productid = item.ProductID }, FormMethod.Post))
+            {
+                <div class="form-group">
+                    <input type="submit" value="Toevoegen" class="btn btn-success"/>
+                </div>
+            }
+        </td>
+    </tr>
+}
+
+</table>
