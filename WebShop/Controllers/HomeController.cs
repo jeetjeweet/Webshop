@@ -27,7 +27,7 @@ namespace WebShop.Controllers
             {
                 if (Login.loggedinUser != null)
                 {
-                    Session["Loggedin"] = Login.loggedinUser;
+                    Session["Loggedin"] = Login.loggedinUser.Admin;
                     if (DataAdres.CheckKlantAdres(Login.loggedinUser))
                     {
                         return RedirectToAction("Index", "Home");

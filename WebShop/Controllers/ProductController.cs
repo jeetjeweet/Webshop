@@ -22,5 +22,19 @@ namespace WebShop.Controllers
             List<Product> alleproducten = DataProduct.GetAllProducts();
             return View(alleproducten);
         }
+
+        [HttpPost]
+        public ActionResult EditSale(double korting, int productid)
+        {
+            if (DataProduct.EditSale(productid, korting))
+            {
+                return RedirectToAction("AlleProducten");
+            }
+            else
+            {
+                ViewBag.Message = "Er is iets mis gegaan, probeer het opnieuw.";
+                return View("AlleProducten");
+            }
+        }
     }
 }
