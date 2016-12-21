@@ -7,6 +7,7 @@ namespace WebShop.Models.Classes
 {
     public class Bestelling
     {
+        private string betaalwijze;
         private int klantid;
         private int bestelnummer;
         private double totaalprijs;
@@ -22,7 +23,7 @@ namespace WebShop.Models.Classes
 
         public double Korting { get { return korting; } set { korting = value; } }
 
-        public string Betaalwijze { get { return Betaalwijze; } set { Betaalwijze = value; } }
+        public string Betaalwijze { get { return betaalwijze; } set { betaalwijze = value; } }
 
         public DateTime DatumBestelling { get { return datumbestelling; } set { datumbestelling = value; } }
 

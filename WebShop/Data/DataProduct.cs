@@ -153,13 +153,32 @@ namespace WebShop.Data
         }
         public static Product GetProductById(int productid)
         {
+            Product p = new Product();
             try
             {
-
+                Database.Query = "select * from product where productid = " + productid + ";";
+                SqlDataReader reader = Database.Command.ExecuteReader();
+                while (reader.Read())
+                {
+                    p = new Product(Convert.ToInt32(reader["ProductID"]),
+                                                 Convert.ToInt32(reader["categorieCategorieID"]),
+                                                 Convert.ToInt32(reader["leverancierLeveranciersID"]),
+                                                 Convert.ToDouble(reader["Prijs"]),
+                                                 Convert.ToDouble(reader["Korting"]),
+                                                 Convert.ToBoolean(reader["Nieuw"]),
+                                                 Convert.ToString(reader["Naam"]),
+                                                 Convert.ToDateTime(reader["Datum Geleverd"]));
+                }
+                return p;
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                return p;
+            }
+            finally
+            {
+                Database.CloseConnection();
             }
         }
     }

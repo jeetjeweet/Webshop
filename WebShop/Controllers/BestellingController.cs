@@ -18,14 +18,50 @@ namespace WebShop.Controllers
         }
         public ActionResult Winkelwagen()
         {
-            return View();
+            if(Login.loggedinUser == null)
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+            else
+            {
+                return View(Login.loggedinUser.winkelwagenlist);
+            }
         }
+
         [HttpPost]
         public ActionResult Winkelwagen(int productid)
         {
-            Product p = DataProduct.GetProductById();
-            Login.loggedinUser.winkelwagenlist.Add(p);
-            return View(Login.loggedinUser.winkelwagenlist);
+            if(Login.loggedinUser == null)
+            {
+                return RedirectToAction("LogIn", "Home");
+            }
+            else
+            {
+                Product p = DataProduct.GetProductById(productid);
+                Login.loggedinUser.winkelwagenlist.Add(p);
+                return View(Login.loggedinUser.winkelwagenlist);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Bestellen()
+        {
+            if (Login.loggedinUser.winkelwagenlist == null)
+            {
+                return RedirectToAction("Winkelwagen");
+            }
+            else
+            {
+                Bestelling b = new Bestelling(DataBestelling.GetLatestBestelnummer() + 1, Login.loggedinUser.KlantID, 10, 0, "1", DateTime.Now);
+                if (DataBestelling.SetBestellingWithProcedure(Login.loggedinUser.winkelwagenlist, b))
+                {
+                    return RedirectToAction("Index","Home");
+                }
+                else
+                {
+                    return RedirectToAction("Winkelwagen");
+                }
+            }
         }
     }
 }
