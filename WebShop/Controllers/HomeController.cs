@@ -47,6 +47,7 @@ namespace WebShop.Controllers
         public ActionResult LogOut()
         {
             Session.RemoveAll();
+            Login.loggedinUser = null;
             return Redirect(Url.Action("Index","Home"));
         }
         public ActionResult Producten()
