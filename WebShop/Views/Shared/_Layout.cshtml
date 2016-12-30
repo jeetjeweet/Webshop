@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @using WebShop.Models.Classes
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -28,13 +29,12 @@
                             <li>@Html.ActionLink("Actie Producten","SpecialeActie","Product")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Session["Loggedin"] != null)
                     {
                         <li>@Html.ActionLink("Winkelwagen","Winkelwagen","Bestelling")</li>
-                        <li>@Html.ActionLink("Log out", "LogOut", "Home")</li>
+                        <li>@Html.ActionLink("Log out " + Login.loggedinUser.Naam, "LogOut", "Home")</li>
                     }
                     @if (Session["Loggedin"] == null)
                     {

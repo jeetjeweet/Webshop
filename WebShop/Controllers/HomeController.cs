@@ -52,6 +52,7 @@ namespace WebShop.Controllers
         {
             Session.RemoveAll();
             Login.loggedinUser = null;
+            Login.loggedinUser.winkelwagenlist = null;
             return Redirect(Url.Action("Index","Home"));
         }
         public ActionResult Producten()

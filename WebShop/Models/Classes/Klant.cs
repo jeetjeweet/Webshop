@@ -17,7 +17,6 @@ namespace WebShop.Models.Classes
         private string wachtwoord;
         private string naam;
         private DateTime datumAangemaakt;
-        private string where;
         private string admin;
 
         
@@ -48,17 +47,6 @@ namespace WebShop.Models.Classes
         public Klant()
         {
 
-        }
-        public Klant(int klantid, int adresid, int dagenlid, int rekeningnummer, string email, string wachtwoord, string naam, DateTime datumaangemaakt)
-        {
-            KlantID = klantid;
-            DagenLid = dagenlid;
-            Rekeningnummer = rekeningnummer;
-            Email = email;
-            Wachtwoord = wachtwoord;
-            Naam = naam;
-            DatumAangemaakt = datumaangemaakt;
-            AdresID = adresid;
         }
 
         public Klant(int klantid, int adresid, int dagenlid, int rekeningnummer, string email, string wachtwoord, string naam, DateTime datumaangemaakt, string admin)
