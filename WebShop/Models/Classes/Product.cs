@@ -43,7 +43,6 @@ namespace WebShop.Models.Classes
             LeveranciersID = leveranciersid;
             DatumGeleverd = datumgeleverd;
         }
-
         public override string ToString()
         {
             return $"Naam: {Naam} | Prijs:€ {Prijs} Kortingspercentage: {Korting}%";

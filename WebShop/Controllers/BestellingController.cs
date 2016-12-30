@@ -44,6 +44,21 @@ namespace WebShop.Controllers
         }
 
         [HttpPost]
+        public ActionResult Verwijder(int productid)
+        {
+            Product p = DataProduct.GetProductById(productid);
+            foreach(Product product in Login.loggedinUser.winkelwagenlist)
+            {
+                if (p.ProductID == product.ProductID)
+                {
+                   Login.loggedinUser.winkelwagenlist.Remove(product);
+                   return View("Winkelwagen", Login.loggedinUser.winkelwagenlist);
+                }
+            }
+            return View("Winkelwagen", Login.loggedinUser.winkelwagenlist);
+        }
+
+        [HttpPost]
         public ActionResult Bestellen()
         {
             if (Login.loggedinUser.winkelwagenlist == null)
