@@ -22,6 +22,7 @@ namespace WebShop.Controllers
             List<Product> alleproducten = DataProduct.GetAllProducts();
             return View(alleproducten);
         }
+
         [HttpPost]
         public ActionResult AlleProducten(int productid)
         {
@@ -32,15 +33,18 @@ namespace WebShop.Controllers
             }
             return View();
         }
+
         public ActionResult SpecialeActie()
         {
             List<Product> specialactieproductlist = DataProduct.SpecialeActie(DataProduct.GetDate());
             return View(specialactieproductlist);
         }
+
         public ActionResult EditSale(Product p)
         {
             return View(p);
         }
+
         [HttpPost]
         public ActionResult EditSale(double Korting, int productid)
         {

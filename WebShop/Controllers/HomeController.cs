@@ -20,6 +20,7 @@ namespace WebShop.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult LogIn(Klant klant)
         {
@@ -48,24 +49,12 @@ namespace WebShop.Controllers
             }
             return View();
         }
+
         public ActionResult LogOut()
         {
             Session.RemoveAll();
             Login.loggedinUser = null;
             return Redirect(Url.Action("Index","Home"));
-        }
-        public ActionResult Producten()
-        {
-            ViewBag.Message = "Your Producten page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

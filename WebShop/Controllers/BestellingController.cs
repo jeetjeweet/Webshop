@@ -16,6 +16,7 @@ namespace WebShop.Controllers
         {
             return View();
         }
+
         public ActionResult Winkelwagen()
         {
             if(Login.loggedinUser == null)
