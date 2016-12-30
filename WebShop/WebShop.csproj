@@ -163,7 +163,6 @@
     </Compile>
     <Compile Include="Models\Classes\Adres.cs" />
     <Compile Include="Models\Classes\Bestelling.cs" />
-    <Compile Include="Models\Classes\BestelOrder.cs" />
     <Compile Include="Models\Classes\Categorie.cs" />
     <Compile Include="Models\Classes\Klant.cs" />
     <Compile Include="Models\Classes\Leverancier.cs" />
