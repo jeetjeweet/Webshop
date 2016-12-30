@@ -198,6 +198,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Product\AlleProducten.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -215,9 +216,9 @@
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Adres\AddAdres.cshtml" />
-    <Content Include="Views\Product\AlleProducten.cshtml" />
     <Content Include="Views\Bestelling\Winkelwagen.cshtml" />
     <Content Include="Views\Product\SpecialeActie.cshtml" />
+    <Content Include="Views\Product\EditSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -42,6 +42,10 @@ namespace WebShop.Controllers
                     ModelState.AddModelError("", "Email or password is incorrect.");
                 }
             }
+            else
+            {
+                ViewBag.message = "Email en/of wachtwoord zijn niet correct.";
+            }
             return View();
         }
         public ActionResult LogOut()

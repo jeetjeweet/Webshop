@@ -26,14 +26,21 @@ namespace WebShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (DataKlant.SetPerson(klant))
+                if (DataKlant.CheckPerson(klant))
                 {
-                    ViewBag.Message = "Uw account is succesvol aangemaakt.";
-                    return RedirectToAction("LogIn", "Home");
+                    ViewBag.message = "De ingevulde email is al in gebruik.";
                 }
                 else
                 {
-                    ViewBag.Message = "Er is wat mis gegaan met uw account aanmaken, probeer het opnieuw.";
+                    if (DataKlant.SetPerson(klant))
+                    {
+                        ViewBag.Message = "Uw account is succesvol aangemaakt.";
+                        return RedirectToAction("LogIn", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Er is wat mis gegaan met uw account aanmaken, probeer het opnieuw.";
+                    }
                 }
             }
             return View();

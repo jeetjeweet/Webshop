@@ -36,14 +36,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Prijs)
         </td>
-            @if (Session["Loggedin"].Equals("wel"))
-            {
-                <td>@Html.EditorFor(modelItem => item.Korting)%</td>
-            }
-            else if (Session["Loggedin"].Equals("niet"))
-            {
-               <td>@Html.DisplayFor(modelItem => item.Korting)%</td> 
-            }
+        <td>
+            @Html.DisplayFor(modelItem => item.Korting)%
+        </td> 
         <td>
             @using (Html.BeginForm("Winkelwagen", "Bestelling", new { productid = item.ProductID }, FormMethod.Post))
             {
@@ -55,7 +50,7 @@
         @if (Session["Loggedin"].Equals("wel"))
         {
             <td>
-                @using (Html.BeginForm("EditSale", "Product", new { korting = item.Korting, productid = item.ProductID }, FormMethod.Post))
+                @using (Html.BeginForm("AlleProducten", "Product", new { productid = item.ProductID }, FormMethod.Post))
                 {
                     <div class="form-group">
                         <input type="submit" value="Wijzig korting" class="btn btn-success" />

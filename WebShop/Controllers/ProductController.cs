@@ -22,16 +22,29 @@ namespace WebShop.Controllers
             List<Product> alleproducten = DataProduct.GetAllProducts();
             return View(alleproducten);
         }
+        [HttpPost]
+        public ActionResult AlleProducten(int productid)
+        {
+            Product p = DataProduct.GetProductById(productid);
+           if( p != null)
+            {
+                return RedirectToAction("EditSale", p);
+            }
+            return View();
+        }
         public ActionResult SpecialeActie()
         {
             List<Product> specialactieproductlist = DataProduct.SpecialeActie(DataProduct.GetDate());
             return View(specialactieproductlist);
         }
-
-        [HttpPost]
-        public ActionResult EditSale(double korting, int productid)
+        public ActionResult EditSale(Product p)
         {
-            if (DataProduct.EditSale(productid, korting))
+            return View(p);
+        }
+        [HttpPost]
+        public ActionResult EditSale(double Korting, int productid)
+        {
+            if (DataProduct.EditSale(productid, Korting))
             {
                 return RedirectToAction("AlleProducten");
             }
