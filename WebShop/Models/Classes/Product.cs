@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebShop.Models.Classes
 {
@@ -20,6 +21,7 @@ namespace WebShop.Models.Classes
         public int ProductID { get { return productID; } set { productID = value; } }
 
         public double Prijs { get { return prijs; } set { prijs = value; } }
+        [Required(ErrorMessage ="Korting is required")]
         public double Korting { get { return korting; } set { korting = value; } }
 
         public bool Nieuw { get { return nieuw; } set { nieuw = value; } }

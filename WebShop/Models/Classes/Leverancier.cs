@@ -9,7 +9,6 @@ namespace WebShop.Models.Classes
     {
         private int adresID;
         private int leveranciersID;
-
         private string naam;
 
         public int AdresID { get { return adresID; } set { adresID = value; } }
