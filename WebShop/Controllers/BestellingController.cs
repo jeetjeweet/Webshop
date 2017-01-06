@@ -68,9 +68,38 @@ namespace WebShop.Controllers
             }
             else
             {
-                //implementeer if(3x een productid == een productid in de lijst met speciale acties)
-                //{doe shit}
-                Bestelling b = new Bestelling(DataBestelling.GetLatestBestelnummer() + 1, Login.loggedinUser.KlantID, 10, 0, "1", DateTime.Now);
+                Bestelling b;
+                int productcount = 0;
+                bool countis3 = false;
+                List<Product> plist = DataProduct.SpecialeActie(DataProduct.GetDate());
+                foreach(Product p in plist)
+                {
+                    for(int i = 0; i < Login.loggedinUser.winkelwagenlist.Count; i++)
+                    {
+                        if(p.ProductID == Login.loggedinUser.winkelwagenlist[i].ProductID)
+                        {
+                            productcount += 1;
+                            if(productcount == 3)
+                            {
+                                countis3 = true;
+                            }
+                        }
+                        else
+                        {
+                            countis3 = false;
+                        }
+                    }
+                }
+
+                if (countis3)
+                {
+                    b = new Bestelling(DataBestelling.GetLatestBestelnummer() + 1, Login.loggedinUser.KlantID, 10, 10, "1", DateTime.Now);
+                }
+                else
+                {
+                    b = new Bestelling(DataBestelling.GetLatestBestelnummer() + 1, Login.loggedinUser.KlantID, 10, 0, "1", DateTime.Now);
+                }
+
                 if (DataBestelling.SetBestellingWithProcedure(Login.loggedinUser.winkelwagenlist, b))
                 {
                     return RedirectToAction("Index","Home");
