@@ -164,6 +164,7 @@
     <Compile Include="Models\Classes\Adres.cs" />
     <Compile Include="Models\Classes\Bestelling.cs" />
     <Compile Include="Models\Classes\Categorie.cs" />
+    <Compile Include="Models\Classes\Datum.cs" />
     <Compile Include="Models\Classes\Klant.cs" />
     <Compile Include="Models\Classes\Leverancier.cs" />
     <Compile Include="Models\Classes\Login.cs" />
@@ -216,6 +217,7 @@
     <Content Include="Views\Bestelling\Winkelwagen.cshtml" />
     <Content Include="Views\Product\SpecialeActie.cshtml" />
     <Content Include="Views\Product\EditSale.cshtml" />
+    <Content Include="Views\Product\EditDateSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

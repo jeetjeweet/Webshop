@@ -58,5 +58,29 @@ namespace WebShop.Controllers
                 return View("AlleProducten");
             }
         }
+        [HttpGet]
+        public ActionResult EditDateSale()
+        {
+            if(Login.loggedinUser.Admin == "niet")
+            {
+                return RedirectToAction("SpecialeActie");
+            }
+            string date = DataProduct.GetDate();
+            Datum datum = new Datum(date);
+            return View("EditDateSale",datum);
+        }
+
+        [HttpPost]
+        public ActionResult EditDateSale(Datum datum)
+        {
+            if (DataProduct.SetDate(datum.Date))
+            {
+                return RedirectToAction("SpecialeActie");
+            }
+            else
+            {
+                return View("SpecialeActie");
+            }
+        }
     }
 }

@@ -42,6 +42,18 @@
                 }
             </td>
         </tr>
-
+    }
+    @if (Session["Loggedin"].ToString() == "wel")
+    {
+        <tr>
+            <td>
+                @using (Html.BeginForm("EditDateSale","Product",FormMethod.Get))
+                {
+                    <div class="form-group">
+                       <input type="submit" value="Wijzig de datum" class="btn btn-success" />
+                    </div>
+                }
+            </td>
+        </tr>
     }
 </table>
